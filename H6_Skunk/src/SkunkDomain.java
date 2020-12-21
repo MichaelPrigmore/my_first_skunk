@@ -3,6 +3,9 @@ import edu.princeton.cs.introcs.*;
 
 public class SkunkDomain
 {
+	private static final int WINNING_SCORE_THRESHOLD = 100;
+	private static final int SKUNK_DOUBLE_SUM = 2;
+	private static final int SKUNK_DEUCE_SUM = 3;
 	public SkunkUI skunkUI;
 	public UI ui;
 	public int numberOfPlayers;
@@ -114,7 +117,8 @@ public class SkunkDomain
 			ui.println("Gives new game score of " + activePlayer.getGameScore());
 
 			ui.println("");
-			if (activePlayer.getGameScore() >= 100)
+			// Refactor Note: replaced "100" with a constant WINNING_SCORE_THRESHOLD.
+			if (activePlayer.getGameScore() >= WINNING_SCORE_THRESHOLD)
 				gameNotOver = false;
 
 			ui.println("Scoreboard: ");
@@ -244,13 +248,13 @@ public class SkunkDomain
 	}
 
 	private boolean isSkunkDeuce()
-	{
-		return skunkDice.getLastRoll() == 3;
+	{	// Refactor Note: replaced "3" with a constant SKUNK_DEUCE_SUM.
+		return skunkDice.getLastRoll() == SKUNK_DEUCE_SUM;
 	}
 
 	private boolean isDoubleSkunk()
-	{
-		return skunkDice.getLastRoll() == 2;
+	{	// Refactor Note: replaced "2" with a constant SKUNK_DEUCE_SUM.
+		return skunkDice.getLastRoll() == SKUNK_DOUBLE_SUM;
 	}
 
 	private boolean isRegularSkunk()
