@@ -117,7 +117,7 @@ public class SkunkDomain
 			ui.println("Gives new game score of " + activePlayer.getGameScore());
 
 			ui.println("");
-			// Refactor Note: replaced "100" with a constant WINNING_SCORE_THRESHOLD.
+			// Refactor Note: Replaced "100" with a constant WINNING_SCORE_THRESHOLD.
 			if (activePlayer.getGameScore() >= WINNING_SCORE_THRESHOLD)
 				gameNotOver = false;
 
