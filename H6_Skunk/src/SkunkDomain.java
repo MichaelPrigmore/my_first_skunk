@@ -82,6 +82,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
+				// Refactor Note: Extracted method. Resulting method is the isRegularSkunk method.
 				else if (isRegularSkunk())
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
