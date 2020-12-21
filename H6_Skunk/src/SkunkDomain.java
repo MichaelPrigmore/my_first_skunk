@@ -54,8 +54,9 @@ public class SkunkDomain
 			ui.println("Next player is " + playerNames[activePlayerIndex] + ".");
 			activePlayer.setTurnScore(0);
 			
-			String wantsToRollStr = ui.promptReadAndReturn("Roll? y or n");
-			boolean wantsToRoll = 'y' == wantsToRollStr.toLowerCase().charAt(0);
+			
+			// Refactor Note: added getRollChoice method to be used in place of a block of code.
+			boolean wantsToRoll = getRollChoice(); 
 			
 			while (wantsToRoll)
 			{
@@ -81,7 +82,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1)
+				else if (isRegularSkunk())
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
@@ -167,7 +168,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 
 				}
-				else if (skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1)
+				else if (isRegularSkunk())
 				{
 					ui.println("One Skunk!  You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
@@ -236,6 +237,18 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean isRegularSkunk()
+	{
+		return skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1;
+	}
+
+	private boolean getRollChoice()
+	{
+		String wantsToRollStr = ui.promptReadAndReturn("Roll? y or n");
+		
+		return 'y' == wantsToRollStr.toLowerCase().charAt(0);
 	}
 
 }
