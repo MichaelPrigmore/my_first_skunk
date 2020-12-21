@@ -98,8 +98,8 @@ public class SkunkDomain
 				ui.println(
 						"Roll of " + skunkDice.toString() + ", gives new turn score of " + activePlayer.getTurnScore());
 
-				wantsToRollStr = ui.promptReadAndReturn("Roll again? y or n");
-				wantsToRoll = 'y' == wantsToRollStr.toLowerCase().charAt(0);
+				// Refactor Note: added getRollChoice method to be used in place of a block of code.
+				wantsToRoll = getRollChoice(); 
 
 			}
 
