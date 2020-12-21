@@ -74,7 +74,8 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getLastRoll() == 3)
+				// Refactor Note: Extracted method from the boolean expression. Resulting method is the isSkunkDeuce method.
+				else if (isSkunkDeuce())
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
@@ -161,7 +162,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getLastRoll() == 3)
+				else if (isSkunkDeuce())
 				{
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
@@ -240,6 +241,11 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean isSkunkDeuce()
+	{
+		return skunkDice.getLastRoll() == 3;
 	}
 
 	private boolean isDoubleSkunk()
