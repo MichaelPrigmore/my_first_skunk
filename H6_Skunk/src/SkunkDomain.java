@@ -160,8 +160,8 @@ public class SkunkDomain
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 4);
-					activePlayer.setTurnScore(0);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
+					activePlayer.scoreSkunkRoll(4);
 					activePlayer.setGameScore(0);
 					wantsToRoll = false;
 					break;
@@ -171,8 +171,8 @@ public class SkunkDomain
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
 					kitty += 2;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 2);
-					activePlayer.setTurnScore(0);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
+					activePlayer.scoreSkunkRoll(2);
 					wantsToRoll = false;
 
 				}
@@ -180,8 +180,8 @@ public class SkunkDomain
 				{
 					ui.println("One Skunk!  You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
-					activePlayer.setNumberChips(activePlayer.getNumberChips() - 1);
-					activePlayer.setTurnScore(0);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
+					activePlayer.scoreSkunkRoll(1);
 					wantsToRoll = false;
 				}
 				else
