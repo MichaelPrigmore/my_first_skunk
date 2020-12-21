@@ -62,7 +62,9 @@ public class SkunkDomain
 			{
 				activePlayer.setRollScore(0);
 				skunkDice.roll();
-				if (skunkDice.getLastRoll() == 2)
+				
+				// Refactor Note: Extracted method from the boolean expression. Resulting method is the isDoubleSkunk method.
+				if (isDoubleSkunk())
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
@@ -82,7 +84,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				// Refactor Note: Extracted method. Resulting method is the isRegularSkunk method.
+				// Refactor Note: Extracted method from the boolean expression. Resulting method is the isRegularSkunk method.
 				else if (isRegularSkunk())
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
@@ -149,7 +151,7 @@ public class SkunkDomain
 				skunkDice.roll();
 				ui.println("Roll is " + skunkDice.toString() + "\n");
 
-				if (skunkDice.getLastRoll() == 2)
+				if (isDoubleSkunk())
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
@@ -238,6 +240,11 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean isDoubleSkunk()
+	{
+		return skunkDice.getLastRoll() == 2;
 	}
 
 	private boolean isRegularSkunk()
