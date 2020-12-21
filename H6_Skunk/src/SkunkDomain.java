@@ -58,7 +58,7 @@ public class SkunkDomain
 			activePlayer.setTurnScore(0);
 			
 			
-			// Refactor Note: added getRollChoice method to be used in place of a block of code.
+			// Refactor Note: added getRollChoice method to be used in place of several blocks of code. Fixed code smell: duplicated code.
 			boolean wantsToRoll = getRollChoice(); 
 			
 			while (wantsToRoll)
@@ -71,8 +71,8 @@ public class SkunkDomain
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(4);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(4);
 					activePlayer.setGameScore(0);
 					wantsToRoll = false;
 					break;
@@ -83,8 +83,8 @@ public class SkunkDomain
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
 					kitty += 2;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(2);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(2);
 					wantsToRoll = false;
 					break;
 				}
@@ -93,8 +93,8 @@ public class SkunkDomain
 				{
 					ui.println("One Skunk! You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(1);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(1);
 					wantsToRoll = false;
 					break;
 
@@ -105,7 +105,7 @@ public class SkunkDomain
 				ui.println(
 						"Roll of " + skunkDice.toString() + ", gives new turn score of " + activePlayer.getTurnScore());
 
-				// Refactor Note: added getRollChoice method to be used in place of a block of code.
+				// Refactor Note: added getRollChoice method to be used in place of several blocks of code. Fixed code smell: duplicated code.
 				wantsToRoll = getRollChoice(); 
 
 			}
@@ -148,7 +148,7 @@ public class SkunkDomain
 			ui.println("Last turn for player " + playerNames[activePlayerIndex] + "...");
 			activePlayer.setTurnScore(0);
 
-			// Refactor Note: added getRollChoice method to be used in place of a block of code.
+			// Refactor Note: added getRollChoice method to be used in place of several blocks of code. Fixed code smell: duplicated code.
 			boolean wantsToRoll = getRollChoice(); 
 
 			while (wantsToRoll)
@@ -160,8 +160,8 @@ public class SkunkDomain
 				{
 					ui.println("Two Skunks! You lose the turn, zeroing out both turn and game scores and paying 4 chips to the kitty");
 					kitty += 4;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(4);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(4);
 					activePlayer.setGameScore(0);
 					wantsToRoll = false;
 					break;
@@ -171,8 +171,8 @@ public class SkunkDomain
 					ui.println(
 							"Skunks and Deuce! You lose the turn, zeroing out the turn score and paying 2 chips to the kitty");
 					kitty += 2;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(2);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(2);
 					wantsToRoll = false;
 
 				}
@@ -180,8 +180,8 @@ public class SkunkDomain
 				{
 					ui.println("One Skunk!  You lose the turn, zeroing out the turn score and paying 1 chip to the kitty");
 					kitty += 1;
-					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is scoreSkunkRoll.
-					activePlayer.scoreSkunkRoll(1);
+					// Refactor Note: Simplified code by moving some statements to method in Player class. The new method is penalizeChipsAndTurnScore. Fixed code smell: duplicated code.
+					activePlayer.penalizeChipsAndTurnScore(1);
 					wantsToRoll = false;
 				}
 				else

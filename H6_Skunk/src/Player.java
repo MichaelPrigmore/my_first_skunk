@@ -76,7 +76,7 @@ public class Player
 		return this.gameScore;
 	}
 
-	public void scoreSkunkRoll(int i)
+	public void penalizeChipsAndTurnScore(int i)
 	{
 		
 		setNumberChips(getNumberChips() - i);
